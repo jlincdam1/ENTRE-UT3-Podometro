@@ -29,8 +29,18 @@ public class Podometro {
      * Inicializa el podómetro con la marca indicada por el parámetro.
      * El resto de atributos se ponen a 0 y el sexo, por defecto, es mujer
      */
-    public Podometro() {
-
+    public Podometro(String queMarca){
+        marca = queMarca;
+        altura = 0;
+        sexo = MUJER;
+        longitudZancada = 0;
+        totalPasosLaborales = 0;
+        totalPasosSabado = 0;
+        totalPasosDomingo = 0;
+        totalDistanciaSemana = 0;
+        totalDistanciaFinSemana = 0;
+        tiempo = 0;
+        caminatasNoche = 0;
         
     }
 
