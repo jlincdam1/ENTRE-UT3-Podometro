@@ -45,12 +45,11 @@ public class Podometro {
     }
 
     /**
-     * accesor para la marca
+     * Accesor para la marca
      *  
      */
-    public      getMarca() {
-
-         
+    public String getMarca(){
+        return marca;
 
     }
 
@@ -63,9 +62,18 @@ public class Podometro {
      * (leer enunciado)
      *  
      */
-    public void configurar(double queAltura, char queSexo) {
-
-        
+    public void configurar(double queAltura, char queSexo){
+        altura = queAltura;
+        sexo = queSexo;
+        if(sexo == MUJER){
+            longitudZancada = Math.floor(altura * ZANCADA_MUJER);
+        } 
+        else if(sexo == HOMBRE){
+            longitudZancada = Math.ceil(altura * ZANCADA_HOMBRE);
+        }
+        else{
+            System.out.println("Por favor introduza un sexo válido.");
+        }
     }
 
      /**
