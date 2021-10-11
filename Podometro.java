@@ -140,9 +140,15 @@ public class Podometro {
      * (ver enunciado)
      *  
      */
-    public void printConfiguracion() {
-
-        
+    public void printConfiguracion(){
+        System.out.println("Configuración del podómetro");
+        System.out.println("***************************");
+        System.out.println("Altura: " + altura + " mtos");
+        switch(sexo){
+            case HOMBRE: System.out.println("Sexo: HOMBRE");
+            case MUJER: System.out.println("Sexo: MUJER");
+        }
+        System.out.println("Longitud zancada: " + longitudZancada + " mtos");
 
     }
 
@@ -154,13 +160,22 @@ public class Podometro {
      *  
      */
     public void printEstadísticas() {
-
-        
+        System.out.println("Estadísticas");
+        System.out.println("***************************");
+        System.out.println("Distancia recorrida toda la semana: " + totalDistanciaSemana + " mtos");
+        System.out.println("Distancia recorrida fin de semana" + totalDistanciaFinSemana);
+        System.out.println("");
+        System.out.println("Nº pasos días laborales: " + totalPasosLaborales);
+        System.out.println("Nº pasos SÁBADO: " + totalPasosSabado);
+        System.out.println("Nº pasos DOMINGO: " + totalPasosDomingo);
+        System.out.println("");
+        System.out.println("Nº caminatas realizadas a partir de las 21h.: " + caminatasNoche);
+        System.out.println("");
+        System.out.println("Tiempo total caminado en la semana: ");
+        System.out.println("Día/s con más pasos caminados: ");
 
     }
-
    
-
     /**
      *  Calcula y devuelve un String que representa el nombre del día
      *  en el que se ha caminado más pasos - "SÁBADO"   "DOMINGO" o  "LABORABLES"
