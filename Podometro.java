@@ -3,11 +3,28 @@
  * acerca de los pasos, distancia, ..... que una persona
  * ha dado en una semana. 
  * 
- * @author    - pon aquí tu nombre - 
+ * @author    - Jiacheng - 
  */
 public class Podometro {
     
-
+    private final char HOMBRE = 'H';
+    private final char MUJER = 'M';
+    private final double ZANCADA_HOMBRE = 0.45;
+    private final double ZANCADA_MUJER = 0.41;
+    private final int SABADO = 6;
+    private final int DOMINGO = 7;
+    private String marca;
+    private double altura;
+    private char sexo;
+    private double longitudZancada;
+    private int totalPasosLaborales;
+    private int totalPasosSabado;
+    private int totalPasosDomingo;
+    private double totalDistanciaSemana;
+    private double totalDistanciaFinSemana;
+    private int tiempo;
+    private int caminatasNoche;
+    
     /**
      * Inicializa el podómetro con la marca indicada por el parámetro.
      * El resto de atributos se ponen a 0 y el sexo, por defecto, es mujer
