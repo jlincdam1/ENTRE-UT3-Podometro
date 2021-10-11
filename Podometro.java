@@ -91,9 +91,46 @@ public class Podometro {
      */
     public void registrarCaminata(int pasos, int dia, int horaInicio,
                             int horaFin) {
-
-       
-
+        
+        totalDistanciaSemana = pasos * longitudZancada;
+        int horaInicioMinutos = horaInicio * 60;
+        int horaFinMinutos = horaFin * 60;
+        tiempo = horaFinMinutos - horaInicioMinutos;
+        if(dia <= 5){
+            totalPasosLaborales = totalPasosLaborales + pasos;
+        }
+        else if(dia == SABADO || dia == DOMINGO){
+            if(dia == SABADO){
+                totalPasosSabado = totalPasosSabado + pasos;
+            }
+            else if(dia == DOMINGO){
+                totalPasosDomingo = totalPasosDomingo + pasos;
+            }
+            totalDistanciaFinSemana = (totalPasosDomingo * longitudZancada)
+             + (totalPasosSabado * longitudZancada);
+        }
+        else if(horaInicio >= 2100 && horaFin > 2100){
+            caminatasNoche = caminatasNoche + pasos; 
+        }
+        
+        switch(dia){
+            case 1: System.out.println("Lunes");
+            break;
+            case 2: System.out.println("Martes");
+            break;
+            case 3: System.out.println("Miercoles");
+            break;
+            case 4: System.out.println("Jueves");
+            break;
+            case 5: System.out.println("Viernes");
+            break;
+            case SABADO: System.out.println("Sábado");
+            break;
+            case DOMINGO: System.out.println("Domingo");
+            break;
+            default:
+                System.out.println("El día no es válido.");
+        }
     }
     
      /**
