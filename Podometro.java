@@ -95,7 +95,7 @@ public class Podometro {
         int horaInicioMinutos = (horaInicio / 100) * 60 + (horaInicio % 100);
         int horaFinMinutos = (horaFin / 100) * 60 + (horaFin % 100);
         int tiempoUnDia = horaFinMinutos - horaInicioMinutos;
-        tiempo = tiempoUnDia + tiempoUnDia;
+        tiempo = tiempo + tiempoUnDia;
         if(horaInicio >= 2100 && horaFin > 2100){
             caminatasNoche ++;
         }
@@ -138,6 +138,7 @@ public class Podometro {
             break;
         }
         System.out.println("Longitud zancada: " + longitudZancadaEnMetros + " mtos");
+        System.out.println("");
 
     }
 
@@ -163,12 +164,6 @@ public class Podometro {
         System.out.println("Nº caminatas realizadas a partir de las 21h.: " + caminatasNoche);
         System.out.println("");
         System.out.println("Tiempo total caminado en la semana: " + tiempoHoras + "h. y " + tiempoRestanteMinutos + "m.");
-        if((totalPasosSabado + totalPasosDomingo) > totalPasosLaborables){
-            System.out.println("Día/s con más pasos caminados: FESTIVOS");
-        }
-        else if(totalPasosLaborables > (totalPasosSabado + totalPasosDomingo)){
-        System.out.println("Día/s con más pasos caminados: LABORABLES");
-    }
     }
    
     /**
