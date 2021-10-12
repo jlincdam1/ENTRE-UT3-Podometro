@@ -92,8 +92,8 @@ public class Podometro {
     public void registrarCaminata(int pasos, int dia, int horaInicio,
                             int horaFin) {
     
-        int horaInicioMinutos = horaInicio * 60;
-        int horaFinMinutos = horaFin * 60;
+        int horaInicioMinutos = (horaInicio / 100) * 60 + (horaInicio % 100);
+        int horaFinMinutos = (horaFin / 100) * 60 + (horaFin % 100);
         tiempo = horaFinMinutos - horaInicioMinutos;
         
         if(horaInicio >= 2100 && horaFin > 2100){
