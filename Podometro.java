@@ -95,7 +95,7 @@ public class Podometro {
         int horaInicioMinutos = (horaInicio / 100) * 60 + (horaInicio % 100);
         int horaFinMinutos = (horaFin / 100) * 60 + (horaFin % 100);
         int tiempoUnDia = horaFinMinutos - horaInicioMinutos;
-        tiempo = tiempo + tiempoUnDia;
+        tiempo += tiempoUnDia;
         if(horaInicio >= 2100 && horaFin > 2100){
             caminatasNoche ++;
         }
@@ -105,11 +105,11 @@ public class Podometro {
             case 2:
             case 3:
             case 4:
-            case 5: totalPasosLaborables = totalPasosLaborables + pasos;
+            case 5: totalPasosLaborables += pasos;
             break;
-            case SABADO: totalPasosSabado = totalPasosSabado + pasos;
+            case SABADO: totalPasosSabado += pasos;
             break;
-            case DOMINGO: totalPasosDomingo = totalPasosDomingo + pasos;
+            case DOMINGO: totalPasosDomingo += pasos;
             break;
         }
         double totalDistanciaSemanaCm = (totalPasosLaborables + totalPasosSabado + totalPasosDomingo) * longitudZancada;
