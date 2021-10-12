@@ -94,8 +94,8 @@ public class Podometro {
     
         int horaInicioMinutos = (horaInicio / 100) * 60 + (horaInicio % 100);
         int horaFinMinutos = (horaFin / 100) * 60 + (horaFin % 100);
-        tiempo = horaFinMinutos - horaInicioMinutos;
-        
+        int tiempoUnDia = horaFinMinutos - horaInicioMinutos;
+        tiempo = tiempoUnDia + tiempoUnDia;
         if(horaInicio >= 2100 && horaFin > 2100){
             caminatasNoche ++;
         }
