@@ -107,9 +107,9 @@ public class Podometro {
             case 4:
             case 5: totalPasosLaborables = totalPasosLaborables + pasos;
             break;
-            case SABADO: totalPasosSabado = pasos;
+            case SABADO: totalPasosSabado = totalPasosSabado + pasos;
             break;
-            case DOMINGO: totalPasosDomingo = pasos;
+            case DOMINGO: totalPasosDomingo = totalPasosDomingo + pasos;
             break;
         }
         double totalDistanciaSemanaCm = (totalPasosLaborables + totalPasosSabado + totalPasosDomingo) * longitudZancada;
@@ -165,34 +165,35 @@ public class Podometro {
         System.out.println("");
         System.out.println("Tiempo total caminado en la semana: " + tiempoHoras + "h. y " + tiempoRestanteMinutos + "m.");
     }
-   
+    
     /**
      *  Calcula y devuelve un String que representa el nombre del día
      *  en el que se ha caminado más pasos - "SÁBADO"   "DOMINGO" o  "LABORABLES"
      */
     public String diaMayorNumeroPasos(){
+        String dia = "";
         if(totalPasosLaborables > totalPasosDomingo && totalPasosLaborables > totalPasosSabado){
-            System.out.println("LABORABLES");
+            dia = "LABORABLES";
         }
         else if(totalPasosDomingo > totalPasosSabado && totalPasosDomingo > totalPasosLaborables){
-            System.out.println("DOMINGO");
+            dia = "DOMINGO";
         }
         else if(totalPasosSabado > totalPasosDomingo && totalPasosSabado > totalPasosLaborables){
-            System.out.println("SABADO");
+            dia = "SABADO";
         }
         else if(totalPasosSabado == totalPasosDomingo && totalPasosDomingo == totalPasosLaborables){
-            System.out.println("LABORABLES SABADO DOMINGO");
+            dia = "LABORABLES SABADO DOMINGO";
         }
         else if(totalPasosSabado == totalPasosDomingo){
-            System.out.println("SABADO DOMINGO");
+            dia = "SABADO DOMINGO";
         }
         else if(totalPasosDomingo == totalPasosLaborables){
-            System.out.println("LABORABLES DOMINGO");
+            dia = "LABORABLES DOMINGO";
         }
         else if(totalPasosSabado == totalPasosLaborables){
-            System.out.println("LABORABLES SABADO");
+            dia = "LABORABLES SABADO";
         }
-        return "";
+        return dia;
     }
     
     /**
