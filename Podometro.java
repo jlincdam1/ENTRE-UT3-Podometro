@@ -109,7 +109,7 @@ public class Podometro {
             break;
             case SABADO: totalPasosSabado += pasos;
             break;
-            case DOMINGO: totalPasosDomingo += totalPasosDomingo + pasos;
+            case DOMINGO: totalPasosDomingo += pasos;
             break;
         }
         double totalDistanciaSemanaCm = (totalPasosLaborables + totalPasosSabado + totalPasosDomingo) * longitudZancada;
