@@ -17,7 +17,7 @@ public class Podometro {
     private double altura;
     private char sexo;
     private double longitudZancada;
-    private int totalPasosLaborales;
+    private int totalPasosLaborables;
     private int totalPasosSabado;
     private int totalPasosDomingo;
     private double totalDistanciaSemana;
@@ -34,7 +34,7 @@ public class Podometro {
         altura = 0;
         sexo = MUJER;
         longitudZancada = 0;
-        totalPasosLaborales = 0;
+        totalPasosLaborables = 0;
         totalPasosSabado = 0;
         totalPasosDomingo = 0;
         totalDistanciaSemana = 0;
@@ -105,14 +105,14 @@ public class Podometro {
             case 2:
             case 3:
             case 4:
-            case 5: totalPasosLaborales = totalPasosLaborales + pasos;
+            case 5: totalPasosLaborables = totalPasosLaborables + pasos;
             break;
-            case SABADO: totalPasosSabado = totalPasosSabado + pasos;
+            case SABADO: totalPasosSabado = pasos;
             break;
-            case DOMINGO: totalPasosDomingo = totalPasosDomingo + pasos;
+            case DOMINGO: totalPasosDomingo = pasos;
             break;
         }
-        double totalDistanciaSemanaCm = (totalPasosLaborales + totalPasosSabado + totalPasosDomingo) * longitudZancada;
+        double totalDistanciaSemanaCm = (totalPasosLaborables + totalPasosSabado + totalPasosDomingo) * longitudZancada;
         totalDistanciaSemana = totalDistanciaSemanaCm / 100000;
         double totalDistanciaFinSemanaCm = (totalPasosDomingo + totalPasosSabado) * longitudZancada;
         totalDistanciaFinSemana = totalDistanciaFinSemanaCm / 100000;
@@ -156,17 +156,17 @@ public class Podometro {
         System.out.println("Distancia recorrida toda la semana: " + totalDistanciaSemana + " Km");
         System.out.println("Distancia recorrida fin de semana: " + totalDistanciaFinSemana + " Km");
         System.out.println("");
-        System.out.println("Nº pasos días laborales: " + totalPasosLaborales);
+        System.out.println("Nº pasos días laborales: " + totalPasosLaborables);
         System.out.println("Nº pasos SÁBADO: " + totalPasosSabado);
         System.out.println("Nº pasos DOMINGO: " + totalPasosDomingo);
         System.out.println("");
         System.out.println("Nº caminatas realizadas a partir de las 21h.: " + caminatasNoche);
         System.out.println("");
         System.out.println("Tiempo total caminado en la semana: " + tiempoHoras + "h. y " + tiempoRestanteMinutos + "m.");
-        if((totalPasosSabado + totalPasosDomingo) > totalPasosLaborales){
+        if((totalPasosSabado + totalPasosDomingo) > totalPasosLaborables){
             System.out.println("Día/s con más pasos caminados: FESTIVOS");
         }
-        else if(totalPasosLaborales > (totalPasosSabado + totalPasosDomingo)){
+        else if(totalPasosLaborables > (totalPasosSabado + totalPasosDomingo)){
         System.out.println("Día/s con más pasos caminados: LABORABLES");
     }
     }
@@ -176,18 +176,29 @@ public class Podometro {
      *  en el que se ha caminado más pasos - "SÁBADO"   "DOMINGO" o  "LABORABLES"
      */
     public String diaMayorNumeroPasos(){
-        if(totalPasosLaborales > totalPasosDomingo && totalPasosLaborales > totalPasosSabado){
+        if(totalPasosLaborables > totalPasosDomingo && totalPasosLaborables > totalPasosSabado){
             System.out.println("LABORABLES");
         }
-        else if(totalPasosDomingo > totalPasosSabado && totalPasosDomingo > totalPasosLaborales){
+        else if(totalPasosDomingo > totalPasosSabado && totalPasosDomingo > totalPasosLaborables){
             System.out.println("DOMINGO");
         }
-        else if(totalPasosSabado > totalPasosDomingo && totalPasosSabado > totalPasosLaborales){
+        else if(totalPasosSabado > totalPasosDomingo && totalPasosSabado > totalPasosLaborables){
             System.out.println("SABADO");
+        }
+        else if(totalPasosSabado == totalPasosDomingo && totalPasosDomingo == totalPasosLaborables){
+            System.out.println("LABORABLES SABADO DOMINGO");
+        }
+        else if(totalPasosSabado == totalPasosDomingo){
+            System.out.println("SABADO DOMINGO");
+        }
+        else if(totalPasosDomingo == totalPasosLaborables){
+            System.out.println("LABORABLES DOMINGO");
+        }
+        else if(totalPasosSabado == totalPasosLaborables){
+            System.out.println("LABORABLES SABADO");
         }
         return "";
     }
-    
     
     /**
      * Restablecer los valores iniciales del podómetro
@@ -199,7 +210,7 @@ public class Podometro {
         sexo = MUJER;
         altura = 0;
         longitudZancada = 0;
-        totalPasosLaborales = 0;
+        totalPasosLaborables = 0;
         totalPasosSabado = 0;
         totalPasosDomingo = 0;
         totalDistanciaSemana = 0;
