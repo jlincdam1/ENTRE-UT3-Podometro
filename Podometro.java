@@ -180,10 +180,17 @@ public class Podometro {
      *  Calcula y devuelve un String que representa el nombre del día
      *  en el que se ha caminado más pasos - "SÁBADO"   "DOMINGO" o  "LABORABLES"
      */
-    public String diaMayorNumeroPasos() {
-
-         
-
+    public String diaMayorNumeroPasos(){
+        if(totalPasosLaborales > totalPasosDomingo && totalPasosLaborales > totalPasosSabado){
+            System.out.println("LABORABLES");
+        }
+        else if(totalPasosDomingo > totalPasosSabado && totalPasosDomingo > totalPasosLaborales){
+            System.out.println("DOMINGO");
+        }
+        else if(totalPasosSabado > totalPasosDomingo && totalPasosSabado > totalPasosLaborales){
+            System.out.println("SABADO");
+        }
+        return "";
     }
     
     
@@ -193,10 +200,17 @@ public class Podometro {
      * que se establece a MUJER. La marca no varía
      *  
      */    
-    public void reset() {
-
-        
-
+    public void reset(){
+        sexo = MUJER;
+        altura = 0;
+        longitudZancada = 0;
+        totalPasosLaborales = 0;
+        totalPasosSabado = 0;
+        totalPasosDomingo = 0;
+        totalDistanciaSemana = 0;
+        totalDistanciaFinSemana = 0;
+        tiempo = 0;
+        caminatasNoche = 0;
     }
 
 }
