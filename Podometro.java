@@ -91,9 +91,7 @@ public class Podometro {
      */
     public void registrarCaminata(int pasos, int dia, int horaInicio,
                             int horaFin) {
-        
-        double totalDistanciaSemanaCm = pasos * longitudZancada;
-        totalDistanciaSemana = totalDistanciaSemanaCm / 100000;
+    
         int horaInicioMinutos = horaInicio * 60;
         int horaFinMinutos = horaFin * 60;
         tiempo = horaFinMinutos - horaInicioMinutos;
@@ -114,8 +112,9 @@ public class Podometro {
             case DOMINGO: totalPasosDomingo = totalPasosDomingo + pasos;
             break;
         }
-        double totalDistanciaFinSemanaCm = (totalPasosDomingo * longitudZancada)
-             + (totalPasosSabado * longitudZancada);
+        double totalDistanciaSemanaCm = (totalPasosLaborales + totalPasosSabado + totalPasosDomingo) * longitudZancada;
+        totalDistanciaSemana = totalDistanciaSemanaCm / 100000;
+        double totalDistanciaFinSemanaCm = (totalPasosDomingo + totalPasosSabado) * longitudZancada;
         totalDistanciaFinSemana = totalDistanciaFinSemanaCm / 100000;
     }
     
@@ -150,6 +149,8 @@ public class Podometro {
      *  
      */
     public void printEstadísticas() {
+        int tiempoHoras = tiempo / 60;
+        int tiempoRestanteMinutos = tiempo - (tiempoHoras * 60);
         System.out.println("Estadísticas");
         System.out.println("***************************");
         System.out.println("Distancia recorrida toda la semana: " + totalDistanciaSemana + " Km");
@@ -161,9 +162,13 @@ public class Podometro {
         System.out.println("");
         System.out.println("Nº caminatas realizadas a partir de las 21h.: " + caminatasNoche);
         System.out.println("");
-        System.out.println("Tiempo total caminado en la semana: ");
-        System.out.println("Día/s con más pasos caminados: ");
-
+        System.out.println("Tiempo total caminado en la semana: " + tiempoHoras + "h. y " + tiempoRestanteMinutos + "m.");
+        if((totalPasosSabado + totalPasosDomingo) > totalPasosLaborales){
+            System.out.println("Día/s con más pasos caminados: FESTIVOS");
+        }
+        else if(totalPasosLaborales > (totalPasosSabado + totalPasosDomingo)){
+        System.out.println("Día/s con más pasos caminados: LABORABLES");
+    }
     }
    
     /**
